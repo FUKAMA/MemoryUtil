@@ -84,6 +84,7 @@ namespace utl
 		void Release()
 		{
 			allocator_.Deallocate(memory_);
+			memory_ = nullptr;
 			capacity_ = 0;
 		}
 
