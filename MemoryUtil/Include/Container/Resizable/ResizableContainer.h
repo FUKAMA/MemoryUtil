@@ -78,9 +78,18 @@ namespace utl
 		// ŠJ•ú
 		//-----------------------------------
 
-		~ResizableMemoryContainer()
+		/// <summary>
+		/// ƒƒ‚ƒŠ‚ğŠJ•ú‚·‚é
+		/// </summary>
+		void Release()
 		{
 			allocator_.Deallocate(memory_);
+			capacity_ = 0;
+		}
+
+		~ResizableMemoryContainer()
+		{
+			Release();
 		}
 
 		//-----------------------------------
