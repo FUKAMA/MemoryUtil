@@ -30,6 +30,26 @@ namespace utl
 		//-----------------------------------
 
 		/// <summary>
+		/// 同じ型のアロケータを使用しているコンテナ同士で代入を行う
+		/// </summary>
+		/// <param name="src"></param>
+		/// <returns></returns>
+		ResizableMemoryContainer<AllocType, AllocArgTypes...>& operator=(const ResizableMemoryContainer<AllocType, AllocArgTypes...>& src)
+		{
+			if (this == &src) return *this;
+			Copy(src.Data(), src.Capacity());
+			return *this;
+		}
+		/// <summary>
+		/// 同じ型のアロケータを使用しているコンテナの内容をコピーして作成を行う
+		/// </summary>
+		/// <param name="src"></param>
+		ResizableMemoryContainer(const ResizableMemoryContainer<AllocType, AllocArgTypes...>& src)
+		{
+			*this = src;
+		}
+
+		/// <summary>
 		/// 異なるアロケータを使用しているコンテナ同士で代入を行う
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
@@ -39,34 +59,19 @@ namespace utl
 		template<typename SubAllocType, typename...SubAllocArgTypes>
 		ResizableMemoryContainer<AllocType, AllocArgTypes...>& operator=(const ResizableMemoryContainer<SubAllocType, SubAllocArgTypes...>& src)
 		{
-			const size_t afterCapacity = src.Capacity();
-
-			Resize(0);
-			Resize(afterCapacity);
-
-			memcpy(Data(), src.Data(), afterCapacity);
-
+			Copy(src.Data(), src.Capacity());
 			return *this;
 		}
-
 		/// <summary>
-		/// 同じ型のアロケータを使用しているコンテナ同士で代入を行う
+		/// 異なるアロケータを使用しているコンテナの内容をコピーして作成を行う
 		/// </summary>
 		/// <param name="src"></param>
-		/// <returns></returns>
-		ResizableMemoryContainer<AllocType, AllocArgTypes...>& operator=(const ResizableMemoryContainer<AllocType, AllocArgTypes...>& src)
+		template<typename SubAllocType, typename...SubAllocArgTypes>
+		ResizableMemoryContainer(const ResizableMemoryContainer<SubAllocType, SubAllocArgTypes...>& src)
 		{
-			if (this == &src) return *this;
-
-			const size_t afterCapacity = src.Capacity();
-
-			Resize(0);
-			Resize(afterCapacity);
-
-			memcpy(Data(), src.Data(), afterCapacity);
-
-			return *this;
+			*this = src;
 		}
+
 
 
 		//-----------------------------------
@@ -81,6 +86,22 @@ namespace utl
 		//-----------------------------------
 		// メモリ操作
 		//-----------------------------------
+
+		/// <summary>
+		/// データを格納する
+		/// </summary>
+		/// <param name="begin"></param>
+		/// <param name="memSize"></param>
+		void Copy(const void* begin, const size_t memSize)
+		{
+			Resize(0);
+
+			if (memSize > 0)
+			{
+				Resize(memSize);
+				memcpy(Data(), begin, memSize);
+			}
+		}
 
 		/// <summary>
 		/// メモリサイズを変更する
