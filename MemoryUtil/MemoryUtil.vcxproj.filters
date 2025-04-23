@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Include">
+      <UniqueIdentifier>{8fa276d5-09f6-4104-a0e8-b45d23630a6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src">
+      <UniqueIdentifier>{bd6fdf82-2682-4c2c-b12c-8f034707ecdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Allocator">
+      <UniqueIdentifier>{d3cc9011-39c5-4ddc-bb4a-675feeadc701}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Container">
+      <UniqueIdentifier>{a5396d55-bdf2-4da6-9153-bab20cdb9de5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Container\Resizable">
+      <UniqueIdentifier>{c6a3945a-b633-49d5-9413-1f9db3f2ee4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Include\Allocator\Default">
+      <UniqueIdentifier>{1832b07d-632f-4497-9b63-6630853b837a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Allocator">
+      <UniqueIdentifier>{68495a78-2823-4bf8-9a5d-03b894b433db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Allocator\Default">
+      <UniqueIdentifier>{bb3e6c3b-c316-4026-a7fc-8b879ef4fa12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Container">
+      <UniqueIdentifier>{390c47b9-cf0f-46a5-9df3-b677cf9960ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Src\Container\Resizable">
+      <UniqueIdentifier>{e22e7c65-6de6-4b53-a67a-5df2b4d96e3d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\MemoryUtil.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Include\Allocator\IMemoryAllocator.h">
+      <Filter>Include\Allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Allocator\Default\DefaultAllocator.h">
+      <Filter>Include\Allocator\Default</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Container\Resizable\ResizableContainer.h">
+      <Filter>Include\Container\Resizable</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Src\Allocator\Default\DefaultAllocator.cpp">
+      <Filter>Src\Allocator\Default</Filter>
+    </ClCompile>
+    <ClCompile Include="Src\Container\Resizable\ResizableContainer.cpp">
+      <Filter>Src\Container\Resizable</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
